@@ -1,0 +1,24 @@
+ttimer_recurrig Copy - Copy.txt Notepad
+File Edit Format View Help
+@echo off
+set /p Delay="Enter delay in minutes:
+set /p Message="Enter the message for the popup:
+echo YourTextLine >> "\\naeast.ad.jpmorganchase.com\home2\nahome00168\1767247\jpmDesk\Desktop"
+set /a Hours=Delay/60
+set /a Minutes-Delay%%60
+set /a Seconds-Delay*60
+set /a Seconds Orig-Delay*60
+title %Message%
+:loop
+if %Seconds% leq 0 goto startPopup!
+set /a Hours-Seconds/3600
+set /a Mins (Seconds %%3600)/60
+echo Remaining time: %Hours% hours, %Mins% minutes
+timeout /t 60 /nobreak >nul
+set /a Seconds -=60
+goto loop
+:startPopup
+powershell ExecutionPolicy Bypass -File "H:/popup_prompt.ps1" -Message "%Message%"
+set /a Seconds-SecondsOrig
+I
+goto loop
